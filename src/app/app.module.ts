@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CustomMaterialModule } from './custom-material-module/custom-material-module.module';
+import { CustomMaterials } from './custom-materials/custom-materials.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { CustomMaterialModule } from './custom-material-module/custom-material-m
   ],
   imports: [
     BrowserModule,
-    CustomMaterialModule
+    CustomMaterials
   ],
   providers: [],
   bootstrap: [AppComponent]
