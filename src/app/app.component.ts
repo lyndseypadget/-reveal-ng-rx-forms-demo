@@ -51,4 +51,9 @@ export class AppComponent implements OnInit {
       postalCode: [address.postalCode, [Validators.required, Validators.pattern(/^\d{5}(?:[-\s]\d{4})?$/)]],
     }));
   }
+
+  public removeAddress(i: number) {
+    let fa = this.orderForm.get('customer.addresses') as FormArray;
+    fa.removeAt(i);
+  }
 }
