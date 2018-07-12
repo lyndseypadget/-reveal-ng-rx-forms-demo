@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     this.addNewAddress();
   }
 
-  private addNewAddress() {
+  public addNewAddress() {
     let address = new Address();
 
     let fa = this.orderForm.get('customer.addresses') as FormArray;
