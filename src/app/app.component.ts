@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { Customer } from './customer';
 import { FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +14,15 @@ export class AppComponent implements OnInit {
   public orderForm: FormGroup;
   private customer: Customer;
 
+  constructor(private fb: FormBuilder) {
+  }
+
   public ngOnInit(): void {
     this.customer = new Customer();
     this.createForm(this.customer);
   }
 
   private createForm(customer: Customer) {
-    this.orderForm = new FormGroup({
-      firstName: new FormControl(customer.firstName),
-      lastName: new FormControl(customer.lastName),
-      age: new FormControl(customer.age)
-    });
+    this.orderForm = this.fb.group(customer);
   }
 }
