@@ -32,14 +32,23 @@ export class AppComponent implements OnInit {
         firstName: customer.firstName,
         lastName: customer.lastName,
         age: customer.age,
-        address: this.fb.group({
-          address1: customer.address.address1,
-          address2: customer.address.address2,
-          city: customer.address.city,
-          state: customer.address.address1,
-          postalCode: [customer.address.postalCode, [Validators.required, Validators.pattern(/^\d{5}(?:[-\s]\d{4})?$/)]],
-        }),
+        addresses: new FormArray([]),
       }),
     });
+
+    this.addNewAddress();
+  }
+
+  private addNewAddress() {
+    let address = new Address();
+
+    let fa = this.orderForm.get('customer.addresses') as FormArray;
+    fa.push(this.fb.group({
+      address1: address.address1,
+      address2: address.address2,
+      city: address.city,
+      state: address.address1,
+      postalCode: [address.postalCode, [Validators.required, Validators.pattern(/^\d{5}(?:[-\s]\d{4})?$/)]],
+    }));
   }
 }
