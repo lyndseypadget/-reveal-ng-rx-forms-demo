@@ -12,26 +12,35 @@
       </mat-form-field>
       <mat-slider min="18" max="100" formControlName="age">
       </mat-slider>
+
+      <!-- addresses go here -->
+      <div formGroupName="address">
+        <mat-form-field>
+          <input matInput placeholder="Street address" formControlName="address1">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Apt number or suite" formControlName="address2">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="City" formControlName="city">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="State" formControlName="state">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Zip" formControlName="postalCode">
+          <mat-error *ngIf="orderForm.get('customer.address.postalCode').hasError('required')">
+            Zip is required
+          </mat-error>
+          <mat-error *ngIf="orderForm.get('customer.address.postalCode').hasError('pattern')">
+            Zip is invalid
+          </mat-error>
+        </mat-form-field>
+      </div>
+
     </div>
 
-    <!-- addresses go here -->
-    <div formGroupName="address">
-      <mat-form-field>
-        <input matInput placeholder="Street address" formControlName="address1">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Apt number or suite" formControlName="address2">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="City" formControlName="city">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="State" formControlName="state">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Zip" formControlName="postalCode">
-      </mat-form-field>
-    </div>
+
 
     <div class="top-pad">
       <button mat-raised-button type="button">Place order</button>
