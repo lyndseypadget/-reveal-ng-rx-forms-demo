@@ -1,24 +1,42 @@
 <div style="text-align:center">
   <h1>PLACE YOUR ORDER</h1>
   <form [formGroup]="orderForm" novalidate>
-    <div>
-      <!-- account info goes here -->
-      <div class="top-pad">
-        <mat-form-field hintLabel="John">
-          <input matInput placeholder="First Name" formControlName="firstName">
-        </mat-form-field>
-        <mat-form-field hintLabel="Doe">
-          <input matInput placeholder="Last Name" formControlName="lastName">
-        </mat-form-field>
-        <mat-slider min="18" max="100" formControlName="age">
-        </mat-slider>
-      </div>
 
-      <!-- addresses go here -->
-      <div class="top-pad">
-        <button mat-raised-button type="button">Place order</button>
-      </div>
+    <!-- account info goes here -->
+    <div formGroupName="customer">
+      <mat-form-field hintLabel="John">
+        <input matInput placeholder="First Name" formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field hintLabel="Doe">
+        <input matInput placeholder="Last Name" formControlName="lastName">
+      </mat-form-field>
+      <mat-slider min="18" max="100" formControlName="age">
+      </mat-slider>
     </div>
+
+    <!-- addresses go here -->
+    <div formGroupName="address">
+      <mat-form-field>
+        <input matInput placeholder="Street address" formControlName="address1">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Apt number or suite" formControlName="address2">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="City" formControlName="city">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="State" formControlName="state">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Zip" formControlName="postalCode">
+      </mat-form-field>
+    </div>
+
+    <div class="top-pad">
+      <button mat-raised-button type="button">Place order</button>
+    </div>
+
   </form>
   <h3>{{orderForm.value | json}}</h3>
 </div>
